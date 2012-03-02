@@ -58,17 +58,39 @@ class LCD
            "DONE"
        ]
 
-       def initialize( size=1, spacing=1 )
+       def initialize( size, spacing )
            @size = size
            @spacing = spacing
        end
 
        def display( digits )
-
-	# CODE GOES HERE!
+            print digits
+	
        end
+       
+       def horizontal_line(position)
+	   case position
+	   when 1	  
+	      line = " " + ("-" * @size) + " " + (" " * @spacing)
+	   when 0
+	      line = " " + (" " * @size) + " " + (" " * @spacing)
+	   end   
+       end
+	   
+       def vertical_line(position)
+           case position
+	   when 1	  
+	      line = " " + (" " * @size) + "|" + (" " * @spacing)
+	   when 2
+	      line = "|" + (" " * @size) + " " + (" " * @spacing)
+           when 3
+	      line = "|" + (" " * @size) + "|" + (" " * @spacing)
+           when 0
+	      line = " " + (" " * @size) + " " + (" " * @spacing)
+	   end  	      
+       end       
+end
 
-    end
-
-    d = LCD.new(1, 1, "")
+    d = LCD.new(1, 1)
     d.display("12")
+    
